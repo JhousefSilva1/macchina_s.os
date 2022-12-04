@@ -30,21 +30,15 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key, required String title}) : super(key: key);
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
+    Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Macchine SOS"),
       ),
-      body: BlocBuilder<AppCubit, AppState>(
+      body: BlocBuilder<AppCubit, AppState>(//escucha los eventos del cubit
           builder: (BuildContext context, state) {
         if (state.isLoading) {
           return Center(child: CircularProgressIndicator());
@@ -82,4 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
       }),
     );
   }
+
 }
+
+
