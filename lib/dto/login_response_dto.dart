@@ -11,12 +11,17 @@ class LoginResponseDto {
   final String firstName;
   final String lastName;
 
+//constructor
   LoginResponseDto(
       {required this.token,
       required this.refreshToken,
       required this.firstName,
       required this.lastName});
 
+//factory constructor
+
+//El endPoint retornara un Json con la sig estructura
+// {"token": "54asd56a4sd564as56d4as56d"}
   factory LoginResponseDto.fromJson(Map<String, dynamic> json) {
     return LoginResponseDto(
         token: json['token'],

@@ -1,24 +1,43 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:macchina_sos/dto/login_response_dto.dart';
+import 'package:macchina_sos/service/login_service.dart';
 
 class AppState {
   final bool isUserLoggedIn;
+  final bool isLoading;
+  final LoginResponseDto? loginResponseDto;
 
-  AppState({required this.isUserLoggedIn}); //construciotr
+  AppState(
+      {required this.isUserLoggedIn,
+      required this.isLoading,
+      this.loginResponseDto}); //construciotr
 }
 
+//Cubit tiene estado la clase AppState
 class AppCubit extends Cubit<AppState> {
-  //Cubit tiene estado la clase AppState
-
-  AppCubit() : super(AppState(isUserLoggedIn: false)); //inicializa el estado
+  AppCubit() : super(AppState(isUserLoggedIn: false, isLoading: false)); //inicializa el estado
 
 //Logica de negocio para hacer LogIn contra backend
-  void logIn() {
-    emit(AppState(isUserLoggedIn: true));
+
+  void login(String username, String password) async {
+    //emitir un evento para que se sepa que se esta haciendo login y se muestre un loading
+    emit(AppState(isUserLoggedIn: false, isLoading: true));
+    try {
+      var loginResponseDto = await LoginService.login(username, password);
+
+      //si el login es exitoso
+      emit(AppState(
+          isUserLoggedIn: true,
+          isLoading: false,
+          loginResponseDto: loginResponseDto));
+    } catch (error) {
+      //si el login es fallido se lanza un evento para que se muestre un mensaje de error
+      emit(AppState(isUserLoggedIn: false, isLoading: false));
+    }
   }
 
-/*
-  void logOut(){
-    emit(AppState(isUserLoggedIn: false));
-  }*/
-
+//Logica de negocio para hacer LogOut contra backend
+  void logOut() {
+    emit(AppState(isUserLoggedIn: false, isLoading: false));
+  }
 }
