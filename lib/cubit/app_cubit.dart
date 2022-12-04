@@ -22,6 +22,7 @@ class AppCubit extends Cubit<AppState> {
   void login(String username, String password) async {
     //emitir un evento para que se sepa que se esta haciendo login y se muestre un loading
     emit(AppState(isUserLoggedIn: false, isLoading: true));
+    await Future.delayed(Duration(seconds: 4));
     try {
       var loginResponseDto = await LoginService.login(username, password);
 
