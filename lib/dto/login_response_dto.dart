@@ -1,3 +1,4 @@
+/*
 //DTO significado
 //Data Transfer Object
 //Objeto de transferência de dados
@@ -28,5 +29,30 @@ class LoginResponseDto {
         refreshToken: json['refreshToken'],
         firstName: json['firstName'],
         lastName: json['lastName']);
+  }
+}
+*/
+
+class LoginResponseDto {
+  final String? token;
+  final String? refresh;
+  //final bool success;
+
+  LoginResponseDto({
+    this.token,
+    this.refresh,
+    //  this.success = false,
+  });
+
+  /*factory LoginResponseDto.fromJson(Map<String, dynamic> json) {
+    return LoginResponseDto(token: json['token'], refresh: json['refresh']);
+  }*/
+
+  factory LoginResponseDto.fromJson(Map<String, dynamic> json) {
+    return LoginResponseDto(
+      token: json['token'],
+      refresh: json['refreshToken'],
+      //success: json['success'],);)
+    );
   }
 }
