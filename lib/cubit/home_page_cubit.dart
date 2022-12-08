@@ -1,9 +1,10 @@
 import 'package:macchina_sos/cubit/home_page_state.dart';
 import 'package:macchina_sos/cubit/page_status.dart';
-import 'package:macchina_sos/dto/user_info_dto.dart';
 import 'package:macchina_sos/service/user_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+import '../dto/user_info.dart';
 
 class HomePageCubit extends Cubit<HomePageState> {
   HomePageCubit() : super(const HomePageState());
@@ -22,6 +23,7 @@ class HomePageCubit extends Cubit<HomePageState> {
         emit(state.copyWith(
             status: PageStatus.success, userInfoDto: userInfoDto));
       } else {
+        // ignore: todo
         // TODO No hay token deberíamos botar al usuario al login
         emit(state.copyWith(
             status: PageStatus.failure,

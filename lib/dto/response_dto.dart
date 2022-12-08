@@ -1,4 +1,3 @@
-import 'login_response_dto.dart';
 
 class ResponseDto<T> {
   final bool success;

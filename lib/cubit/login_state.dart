@@ -1,8 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-import 'page_status.dart';
 
-//enum PageStatus { initial, loading, success, failure }
+enum PageStatus { initial, loading, success, failure }
 
 class LoginState extends Equatable {
   final PageStatus status;
@@ -10,7 +9,8 @@ class LoginState extends Equatable {
   final String? errorMessage;
   final Exception? exception;
   final String? token;
-  final String? refreshToken;
+  final String? refresh;
+
 
   const LoginState({
     this.status = PageStatus.initial,
@@ -18,7 +18,7 @@ class LoginState extends Equatable {
     this.errorMessage,
     this.exception,
     this.token,
-    this.refreshToken,
+    this.refresh,
   });
 
   LoginState copyWith({
@@ -27,7 +27,7 @@ class LoginState extends Equatable {
     String? errorMessage,
     Exception? exception,
     String? token,
-    String? refreshToken,
+    String? refresh,
   }) {
     return LoginState(
       status: status ?? this.status,
@@ -35,7 +35,7 @@ class LoginState extends Equatable {
       errorMessage: errorMessage ?? this.errorMessage,
       exception: exception ?? this.exception,
       token: token ?? this.token,
-      refreshToken: refreshToken ?? this.refreshToken,
+      refresh: refresh ?? this.refresh,
     );
   }
 
@@ -46,6 +46,6 @@ class LoginState extends Equatable {
         errorMessage,
         exception,
         token,
-        refreshToken,
+        refresh,
       ];
 }

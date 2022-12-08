@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
           body: BlocBuilder<HomePageCubit, HomePageState>(
             builder: (context, state) {
               if (state.status == PageStatus.loading) {
-                return Text("Cargando su información ....");
+                return const Text("Cargando su información ....");
               } else if (state.status == PageStatus.failure) {
                 return Text("Ha ocurrido un error: ${state.errorMessage}");
               } else {

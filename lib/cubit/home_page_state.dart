@@ -1,6 +1,6 @@
 import 'package:macchina_sos/cubit/page_status.dart';
-import 'package:macchina_sos/dto/user_info_dto.dart';
 import 'package:equatable/equatable.dart';
+import '../dto/user_info.dart';
 
 class HomePageState extends Equatable {
   // Necesitamos informar al Widget en que estado estamos

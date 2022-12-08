@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:macchina_sos/cubit/login_cubit.dart';
 import 'package:macchina_sos/cubit/login_state.dart';
-import 'package:macchina_sos/cubit/page_status.dart';
-
-import '../cubit/app_cubit.dart';
 
 /*
 class LoginPage extends StatelessWidget {
@@ -121,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
 
   @override
-  Widget build(BuildContext ctx1) {
+  Widget build(BuildContext ctx3) {
     return BlocProvider(
       create: (context) => LoginCubit(),
       child: Scaffold(
@@ -139,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                 Navigator.pushNamed(ctx3, '/home');
               } else {
                 Navigator.pop(ctx3); // quito el dialog
-                _showDialog(context, "Error", state.errorMessage!, true);
+                _showDialog(context, "Errores12", state.errorMessage!, true);
               }
             },
             builder: (context, state) => Center(child: formLogin(context)),
